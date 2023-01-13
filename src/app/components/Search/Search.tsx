@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useCallback } from "react";
+import React, { FC, useEffect, useCallback } from "react";
 import styles from "./Search.module.scss";
 import {
   Subject,
