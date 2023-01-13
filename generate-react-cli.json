@@ -1,5 +1,5 @@
 {
-  "usesTypeScript": false,
+  "usesTypeScript": true,
   "usesCssModule": true,
   "cssPreprocessor": "scss",
   "testLibrary": "Testing Library",
@@ -19,7 +19,7 @@
       "withTest": true
     },
     "layout": {
-      "path": "src/layout",
+      "path": "src/layouts",
       "withLazy": false,
       "withStory": false,
       "withStyle": false,

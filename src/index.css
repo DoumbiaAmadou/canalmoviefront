@@ -1,15 +1,38 @@
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'JetBrains',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
-  color : aliceblue
+  background-image: linear-gradient(
+    to bottom,
+    rgba(89, 86, 103, 0.5),
+    rgba(26, 26, 99, 0.5)
+  );
+  color : aliceblue ; 
+  height: 100vh;
+  
 }
-
+:root {
+  --primary: #43a047;
+}
 code {
   font-family: JetBrains, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+[data-theme="dark"] {
+  --primary: #d81b60;
+  --primary-hover: #e91e63;
+  --primary-focus: rgba(216, 27, 96, 0.25);
+  --primary-inverse: #FFF;
+}
+
+/* Pink (Common styles) */
+:root {
+  --form-element-active-border-color: var(--primary);
+  --form-element-focus-color: var(--primary-focus);
+  --switch-color: var(--primary-inverse);
+  --switch-checked-background-color: var(--primary);
 }
