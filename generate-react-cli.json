@@ -5,21 +5,21 @@
   "testLibrary": "Testing Library",
   "component": {
     "default": {
-      "path": "src/components",
+      "path": "src/app/components",
       "withLazy": false,
       "withStory": false,
       "withStyle": true,
       "withTest": true
     },
     "page": {
-      "path": "src/pages",
+      "path": "src/app/pages",
       "withLazy": true,
       "withStory": false,
       "withStyle": true,
       "withTest": true
     },
     "layout": {
-      "path": "src/layouts",
+      "path": "src/app/layouts",
       "withLazy": false,
       "withStory": false,
       "withStyle": false,

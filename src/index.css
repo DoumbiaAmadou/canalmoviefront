@@ -12,8 +12,9 @@ body {
     rgba(89, 86, 103, 0.5),
     rgba(26, 26, 99, 0.5)
   );
+  background-attachment: scroll;
   color : aliceblue ; 
-  height: 100vh;
+  height: auto;
   
 }
 
@@ -23,6 +24,10 @@ body {
 code {
   font-family: JetBrains, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.container{
+
+
 }
 [data-theme="dark"] {
   --primary: #d81b60;
