@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from "react";
 import styles from "./Paginate.module.scss";
-import { useDebounce } from "../../hook/use-Debounce";
+import { useDebounce } from "../../hook";
 
 interface PaginateProps {
   current?: number;

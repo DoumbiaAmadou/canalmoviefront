@@ -1,32 +1,32 @@
 const URL = "https://api.themoviedb.org/3/discover/tv?";
+const URL_DETAIL = "https://api.themoviedb.org/3/find/";
+const URL_SEARCH = "https://api.themoviedb.org/3/search/multi?"
 
-const queuryParams = {
+const QUERYPARAMS = {
   api_key: "92b418e837b833be308bbfb1fb2aca1e",
   language: "fr",
   sort_by: "popularity.desc",
   page: "1",
   timezone: "America/New_York",
-  include_null_first_air_dates: "false",
+  include_null_first_air_dates: false,
+  include_adult: true
 };
 
-export interface QueuryType {
+export interface QueryType {
   api_key: string;
   language: string;
   sort_by: string;
   page: string;
   timezone: string;
   include_null_first_air_dates: string;
-  [key: string]: string;
+  [key: string]: string | number | boolean;
 }
-export interface QueuryTypeUpdated {
-  api_key?: string;
-  language?: string;
-  sort_by?: string;
-  page?: string;
-  timezone?: string;
-  include_null_first_air_dates?: string;
+
+export interface QueryTypeUpdated {
+  [key: string]: string | number | boolean;
 }
-const jsonToQueury = (obj: QueuryType) => {
+
+const jsonToQuery = (obj: QueryTypeUpdated) => {
   return Object.keys(obj).reduce(
     (acc: string, value: string, key) => `${acc}${value}=${obj[value]}&`,
     ""
@@ -55,8 +55,9 @@ export interface PageSearchType {
   total_pages: number;
   total_results: number;
 }
-export const allContentsService = async (custom: QueuryTypeUpdated = {}) => {
-  let contents = await fetch(URL + jsonToQueury({ ...queuryParams, ...custom }))
+
+const filmFetch = async (url: string) => {
+  return await fetch(url)
     .then((res) => {
       if (res.status === 200) {
         return res.json();
@@ -64,6 +65,20 @@ export const allContentsService = async (custom: QueuryTypeUpdated = {}) => {
       // throw new Error("API  Error => " + JSON.stringify(res.status));
     })
     .then((value: PageSearchType) => value);
+};
 
-  return contents;
+const makeDetailUrl = (id: number) => {
+  const { api_key } = QUERYPARAMS;
+  return URL_DETAIL + id + "?" + jsonToQuery({ api_key: api_key });
+};
+
+export const detailFind = async (id: number) => {
+  return await filmFetch(makeDetailUrl(id));
+};
+
+export const allContentsService = async (custom: QueryTypeUpdated = {}) => {
+  return await filmFetch(URL + jsonToQuery({ ...QUERYPARAMS, ...custom }));
+};
+export const searchService = async (custom: QueryTypeUpdated = {}) => {
+  return await filmFetch(URL_SEARCH + jsonToQuery({ ...QUERYPARAMS, ...custom }));
 };

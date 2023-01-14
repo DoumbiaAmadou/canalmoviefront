@@ -1,7 +1,7 @@
 export type {
   ResultType,
-  QueuryTypeUpdated,
+  QueryTypeUpdated,
   PageSearchType,
-  QueuryType,
+  QueryType,
 } from "./FilmService";
-export { allContentsService } from "./FilmService";
+export { allContentsService, searchService } from "./FilmService";
