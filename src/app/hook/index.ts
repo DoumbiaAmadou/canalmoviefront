@@ -1,1 +1,1 @@
-export { useDebounce } from "./use-Subject";
+export { useDebounce } from "./use-Debounce";

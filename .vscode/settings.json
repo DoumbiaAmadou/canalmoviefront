@@ -1,0 +1,7 @@
+{
+  "docwriter.style": "JSDoc",
+  "docwriter.progress.trackClasses": true,
+  "docwriter.progress.trackTypes": true,
+  "docwriter.language": "English",
+  "npm-scripts.showStartNotification": false
+}
