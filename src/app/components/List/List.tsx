@@ -1,19 +1,29 @@
 import React, { FC } from "react";
 import styles from "./List.module.scss";
-import { ResultType } from "../../services";
+import { BASE_URL, ResultType } from "../../services";
+//navifate instead of history in react router dom@6
 
-const BASE_URL = "https://image.tmdb.org/t/p/w400/";
 interface ListProps {
   content?: any[];
   nbColum?: number;
+  click?: (element: ResultType) => void;
 }
-const List: FC<ListProps> = ({ content = [], nbColum = 4 }) => {
-
+const List: FC<ListProps> = ({ content = [], nbColum = 4, click }) => {
+  /**
+   *
+   * @param content ResultType[]
+   * @param indexGrind :number
+   * @returns JSX.Element
+   */
   const listView = (content: ResultType[], indexGrind: number) => {
     return (
       <div className="grid" key={indexGrind}>
         {content.map((element, index) => (
-          <div key={index} className={styles.Poster}>
+          <div
+            key={index}
+            className={styles.Poster}
+            onClick={() => click && click(element)}
+          >
             <img src={BASE_URL + element.poster_path} alt="" />
             <span>
               <h6>{element.name}</h6>

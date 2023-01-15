@@ -1,0 +1,28 @@
+.DetailPage {
+  div {
+  }
+}
+.Center {
+  margin: auto;
+  text-align: center;
+  img {
+    height: 400px;
+    border-radius: 10px;
+  }
+}
+.Transparency {
+  background: #00000000;
+}
+.Production {
+  height: 40px;
+  width: 40px;
+}
+.Blur {
+  background: linear-gradient(#231f1f3d, #130b18be);
+  border-radius: 10px;
+  padding: 10px;
+}
+.Ellipsis {
+  overflow: hidden;
+  text-overflow: clip;
+}

@@ -1,9 +1,16 @@
 import React from "react";
 import "./App.css";
 import { SearchPage } from "./pages";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DetailPage from "./pages/DetailPage/DetailPage";
 
-function App() {
-  return <SearchPage></SearchPage>;
-}
+const App = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<SearchPage />} />
+      <Route path="/detail/:contentID/:mediaType" element={<DetailPage />} />
+    </Routes>
+  </BrowserRouter>
+);
 
 export default App;
