@@ -9,17 +9,20 @@ import {
 } from "../../services/FilmService";
 import { BASE_URL, BASE_URLWIDE } from "../../services";
 
-interface DetailPageProps {}
+interface DetailPageProps { }
 
 const DetailPage: FC<DetailPageProps> = () => {
+
   //hooks
   const [detailElement, setDetailElement] = useState<DetailType>();
   let navigate = useNavigate();
   let params = useParams();
+
   //useEffect
   useEffect(() => {
     getDetail();
   }, []);
+
   //functions
   const getDetail = useCallback(async () => {
     if (params.mediaType && typeof params.contentID === "string") {
@@ -30,6 +33,7 @@ const DetailPage: FC<DetailPageProps> = () => {
       if (!isPageSearchType(detail)) setDetailElement(detail);
     }
   }, [params.mediaType, params.contentID]);
+
   const makeSeasons = (e: Season) => {
     if (e && e.overview && e.overview.length > 1)
       return (
@@ -85,14 +89,17 @@ const DetailPage: FC<DetailPageProps> = () => {
             {detailElement?.production_companies.map(
               (e) =>
                 e.logo_path && (
-                  <span key={e.id}>
-                    <img
-                      className={styles.Production}
-                      src={BASE_URL + e.logo_path}
-                      alt=""
-                    />
-                    {e.name} &nbsp;
-                  </span>
+                  <strong>
+                    <span key={e.id}>
+                      &nbsp;
+                      <img
+                        className={styles.Production}
+                        src={BASE_URL + e.logo_path}
+                        alt=""
+                      />&nbsp;
+                      {e.name} &nbsp;
+                    </span>
+                  </strong>
                 )
             )}
             <br />

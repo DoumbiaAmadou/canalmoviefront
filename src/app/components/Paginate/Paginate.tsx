@@ -31,7 +31,7 @@ const Paginate: FC<PaginateProps> = ({
           >
             {"<< Prev "}
           </u>
-          &nbsp;&nbsp; from {1} to {total}, current Value: {current}
+          &nbsp;&nbsp; Page: from {1} to {total}, current Page: {current}
           &nbsp; &nbsp; &nbsp;
           <u
             onClick={(e) =>
@@ -42,7 +42,7 @@ const Paginate: FC<PaginateProps> = ({
           </u>
           &nbsp;
         </label>
-
+        <br />
         <input
           className="paginateInput"
           min={1}
@@ -51,6 +51,7 @@ const Paginate: FC<PaginateProps> = ({
           onChange={handleNext}
           max={total}
         />
+        <br /> <br />
       </div>
     </div>
   );
