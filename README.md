@@ -1,14 +1,26 @@
 # Canal Movie Front.
+### [description] this project a frontend App for [themoviedb](https://developers.themoviedb.org/3/movies/get-movie-videos) website 
 
-This is react Project [React Project](https://github.com/facebook/create-react-app).
+**[InProgres]**
+
+
+By default it's use discovery request to find all TV content and apply a search, sort, paginate module in it. 
+in search mode it's use MultiSearch Route to find all Movie and TV content 
+NB: sorting in not allowed by API in Search Mode. 
+
+we could see a Detail Mode, to find out more a single content with some couple detail. 
+if search is emplty we reset to discovery mode TV.
+
+<strong> <u>In discovery</u>: mode we can get alltogether TV and movie content thi's why I choice to by default select TV mode in discovery. <strong>
+
+Pagination Module: 
+pagination module is base on the result on the page and un dynamically change on page content updating. 
+
+in search mode page is set to 1 befaore return result.
 
 ## Available Scripts
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
+#### `npm start`
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
