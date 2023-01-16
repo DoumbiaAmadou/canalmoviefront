@@ -15,7 +15,7 @@ import { Paginate } from "../../components/";
 import { searchService } from "../../services";
 import { useNavigate, useParams } from "react-router-dom";
 
-interface SearchPageProps {}
+interface SearchPageProps { }
 
 const SearchPage: FC<SearchPageProps> = () => {
   //hooks
@@ -93,9 +93,9 @@ const SearchPage: FC<SearchPageProps> = () => {
     console.log("redirect", element);
     navigate(
       "/detail/" +
-        element.id +
-        "/" +
-        (element.media_type ? element.media_type : mediaType)
+      element.id +
+      "/" +
+      (element.media_type ? element.media_type : mediaType)
     );
   };
   return (
@@ -103,21 +103,22 @@ const SearchPage: FC<SearchPageProps> = () => {
       <V5Layout.TopMenu>
         <h1>Welcome to Canal Movie search Engine. </h1>
         <Search handleSearch={handleSearch}></Search>
-        <br />
-        <kbd className="warning" onClick={() => sort(true)}>
-          ASC
-        </kbd>{" "}
-        &nbsp; &nbsp; &nbsp;
-        <kbd className="warning" onClick={() => sort(false)}>
-          DESC
-        </kbd>
-        <br />
+
+        {query === "" && <p>
+          <kbd className="warning" onClick={() => sort(true)}>
+            ASC
+          </kbd>{" "}
+          &nbsp; &nbsp; &nbsp;
+          <kbd className="warning" onClick={() => sort(false)}>
+            DESC
+          </kbd>
+        </p>}
         <Paginate
           current={page}
           total={totalPage}
           currentChange={handlePaginate}
         ></Paginate>
-        <p />
+        <br />
       </V5Layout.TopMenu>
       <V5Layout.ContentArea>
         <List content={allContent} click={handledetail}></List>
