@@ -5,6 +5,7 @@ import { List } from "../../components";
 import {
   CustomResult,
   DetailType,
+  QueryTypeUpdated,
   allContentsService,
   isPageSearchType,
 } from "../../services";
@@ -12,55 +13,89 @@ import {
 import type { ResultType, PageSearchType } from "../../services";
 import { Paginate } from "../../components/";
 import { searchService } from "../../services";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface SearchPageProps {}
 
 const SearchPage: FC<SearchPageProps> = () => {
+  //hooks
+  let queryString = useParams();
+  const [params, setParams] = useState<QueryTypeUpdated>();
   const [mediaType, setMediaType] = useState<string>("tv");
   const [allContent, setAllContent] = useState<ResultType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
   const [totalPage, setTotalPage] = useState<number>(1);
-  //hooks
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (query === "") {
-      allContentsService({ page: "" + page, mediaType: mediaType }).then(
-        fillAllContent
-      );
-    } else {
-      searchService({ page: "" + page, query: query }).then(fillAllContent);
+    let spreadParams = {};
+    if (queryString?.params) {
+      spreadParams = {
+        ...handleParams(queryString?.params),
+      };
     }
-  }, [page, query]);
+    spreadParams = {
+      ...spreadParams,
+      ...params,
+      ...{ query: query, page: page },
+    };
+    console.log("ppp", JSON.stringify(spreadParams));
+    if (query === "") {
+      allContentsService(spreadParams).then(fillAllContent);
+    } else {
+      searchService(spreadParams).then(fillAllContent);
+    }
+  }, [page, query, params]);
 
   const handleSearch = useCallback((val: string) => {
+    setPage(1);
     setQuery(val);
   }, []);
+
+  const handleParams = (val: string) => {
+    const asc = val.split("&").find((e) => e === "asc" || e === "desc");
+    // const rpage = val
+    //   .split("&")
+    //   .find((e) => e.includes("page="))
+    //   ?.replace("page=", "");
+    // console.log("rpage ", rpage);
+    return {
+      // page: rpage ? rpage : "1",
+      sort_by:
+        asc && asc === "asc" ? "original_title.asc" : "original_title.desc",
+    };
+  };
   const handlePaginate = (val: number) => {
     setPage((prev) => val);
   };
   const fillAllContent = (result: CustomResult) => {
     if (isPageSearchType(result)) {
-      console.log(result);
       setAllContent(result.results);
       //API LIMITAION total_pages limit to 499
       /**
        * {"errors":["page must be less than or equal to 500"],"success":false}
        */
+
       if (result.total_pages && result.total_pages < 500)
         setTotalPage((prev) => result.total_pages);
       else setTotalPage((prev) => 499);
     }
   };
+  const sort = (asc: boolean) => {
+    navigate("/");
+    setParams((prev) => ({
+      ...prev,
+      ...{ sort_by: asc ? "original_title.asc" : "original_title.desc" },
+    }));
+  };
   const handledetail = (element: ResultType) => {
-    console.log("==>", element);
+    console.log("redirect", element);
     navigate(
       "/detail/" +
         element.id +
         "/" +
-        (element.mediaType ? element.mediaType : mediaType)
+        (element.media_type ? element.media_type : mediaType)
     );
   };
   return (
@@ -68,6 +103,15 @@ const SearchPage: FC<SearchPageProps> = () => {
       <V5Layout.TopMenu>
         <h1>Welcome to Canal Movie search Engine. </h1>
         <Search handleSearch={handleSearch}></Search>
+        <br />
+        <kbd className="warning" onClick={() => sort(true)}>
+          ASC
+        </kbd>{" "}
+        &nbsp; &nbsp; &nbsp;
+        <kbd className="warning" onClick={() => sort(false)}>
+          DESC
+        </kbd>
+        <br />
         <Paginate
           current={page}
           total={totalPage}

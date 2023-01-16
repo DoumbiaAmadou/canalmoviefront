@@ -36,7 +36,7 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
         souscription = null;
       }
     };
-  });
+  }, []);
 
   const onSearchHandle = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,15 +50,13 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
 
   return (
     <div className={styles.Search} data-testid="Search">
-      <form>
-        <input
-          type="text"
-          className=""
-          name="search"
-          placeholder="Search"
-          onChange={onSearchHandle}
-        />
-      </form>
+      <input
+        type="text"
+        className=""
+        name="search"
+        placeholder="Search"
+        onChange={onSearchHandle}
+      />
     </div>
   );
 };

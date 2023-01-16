@@ -1,6 +1,5 @@
 const URL_BASE = "https://api.themoviedb.org/3/";
 const URL_ALL = "https://api.themoviedb.org/3/discover/";
-const URL_DETAIL = "https://api.themoviedb.org/3/";
 const URL_SEARCH = "https://api.themoviedb.org/3/search/multi?"
 
 const QUERYPARAMS = {
@@ -31,7 +30,7 @@ export interface QueryTypeUpdated {
 
 const jsonToQuery = (obj: QueryTypeUpdated) => {
   return Object.keys(obj).reduce(
-    (acc: string, value: string, key) => `${acc}${value}=${obj[value]}&`,
+    (acc: string, value: string) => `${acc}${value}=${obj[value]}&`,
     ""
   );
 };
@@ -50,7 +49,7 @@ export interface ResultType {
   poster_path: string;
   vote_average: number;
   vote_count: number;
-  mediaType?: string
+  media_type?: string
 }
 
 export interface PageSearchType {
@@ -184,5 +183,8 @@ export const allContentsService = async (custom: QueryTypeUpdated = {}, mediaTyp
   return await filmFetch(URL_ALL + `${mediaType}?` + jsonToQuery({ ...QUERYPARAMS, ...custom }));
 };
 export const searchService = async (custom: QueryTypeUpdated = {}) => {
-  return await filmFetch(URL_SEARCH + jsonToQuery({ ...QUERYPARAMS, ...custom, }));
+  return await filmFetch(URL_SEARCH + jsonToQuery({
+    ...{ api_key: QUERYPARAMS.api_key },
+    ...{ query: custom.query, page: custom.page, include_adult: custom.include_adult }
+  }));
 };

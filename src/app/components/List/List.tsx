@@ -24,7 +24,9 @@ const List: FC<ListProps> = ({ content = [], nbColum = 4, click }) => {
             className={styles.Poster}
             onClick={() => click && click(element)}
           >
-            <img src={BASE_URL + element.poster_path} alt="" />
+            {element.poster_path && (
+              <img src={BASE_URL + element.poster_path} alt="" />
+            )}
             <span>
               <h6>{element.name}</h6>
             </span>

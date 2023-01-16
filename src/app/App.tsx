@@ -7,7 +7,7 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 const App = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<SearchPage />} />
+      <Route path="/:params?" element={<SearchPage />} />
       <Route path="/detail/:contentID/:mediaType" element={<DetailPage />} />
     </Routes>
   </BrowserRouter>

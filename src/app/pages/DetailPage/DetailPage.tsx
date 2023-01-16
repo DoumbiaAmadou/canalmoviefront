@@ -12,14 +12,15 @@ import { BASE_URL, BASE_URLWIDE } from "../../services";
 interface DetailPageProps {}
 
 const DetailPage: FC<DetailPageProps> = () => {
+  //hooks
   const [detailElement, setDetailElement] = useState<DetailType>();
   let navigate = useNavigate();
-
   let params = useParams();
+  //useEffect
   useEffect(() => {
     getDetail();
   }, []);
-
+  //functions
   const getDetail = useCallback(async () => {
     if (params.mediaType && typeof params.contentID === "string") {
       const detail = await detailFind(
@@ -38,6 +39,7 @@ const DetailPage: FC<DetailPageProps> = () => {
       );
     return "";
   };
+
   return (
     <div
       className={styles.DetailPage}
@@ -98,7 +100,7 @@ const DetailPage: FC<DetailPageProps> = () => {
           </div>
         </div>
 
-        <footer>{detailElement?.seasons.map((e) => makeSeasons(e))}</footer>
+        <footer>{detailElement?.seasons?.map((e) => makeSeasons(e))}</footer>
       </article>
     </div>
   );
