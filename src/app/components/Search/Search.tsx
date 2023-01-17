@@ -23,14 +23,11 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
         distinctUntilChanged()
       ).subscribe((val: unknown) => {
         if (typeof val === "string" && handleSearch) {
-          console.log("debouce", val);
           handleSearch(val);
         }
       });
-      console.log("Monted");
     }
     return () => {
-      console.log("UnMonted");
       if (souscription) {
         souscription.unsubscribe();
         souscription = null;
@@ -42,7 +39,6 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();
       const value = e.target.value;
-      console.log("Next", value);
       Subject$.next(value);
     },
     []

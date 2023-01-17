@@ -4,13 +4,12 @@ import { Search } from "../../components";
 import { List } from "../../components";
 import {
   CustomResult,
-  DetailType,
   QueryTypeUpdated,
   allContentsService,
   isPageSearchType,
 } from "../../services";
 
-import type { ResultType, PageSearchType } from "../../services";
+import type { ResultType } from "../../services";
 import { Paginate } from "../../components/";
 import { searchService } from "../../services";
 import { useNavigate, useParams } from "react-router-dom";
@@ -40,7 +39,6 @@ const SearchPage: FC<SearchPageProps> = () => {
       ...params,
       ...{ query: query, page: page },
     };
-    console.log("ppp", JSON.stringify(spreadParams));
     if (query === "") {
       allContentsService(spreadParams).then(fillAllContent);
     } else {
@@ -55,13 +53,7 @@ const SearchPage: FC<SearchPageProps> = () => {
 
   const handleParams = (val: string) => {
     const asc = val.split("&").find((e) => e === "asc" || e === "desc");
-    // const rpage = val
-    //   .split("&")
-    //   .find((e) => e.includes("page="))
-    //   ?.replace("page=", "");
-    // console.log("rpage ", rpage);
     return {
-      // page: rpage ? rpage : "1",
       sort_by:
         asc && asc === "asc" ? "original_title.asc" : "original_title.desc",
     };
