@@ -165,7 +165,6 @@ const filmFetch = async (url: string) => {
       if (res.status === 200) {
         return res.json();
       }
-      // throw new Error("API  Error => " + JSON.stringify(res.status));
     })
     .then((value: PageSearchType | DetailType) => value);
 };

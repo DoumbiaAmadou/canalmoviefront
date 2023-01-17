@@ -14,8 +14,6 @@ interface SearchProps {
 let souscription: Subscription | null = null;
 const Subject$ = new Subject();
 const Search: FC<SearchProps> = ({ handleSearch }) => {
-  // const [word, setWord] = useState<string>("");
-
   useEffect(() => {
     if (!souscription) {
       souscription = Subject$.pipe(
@@ -50,6 +48,7 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
         type="text"
         className=""
         name="search"
+        role="search"
         placeholder="Search"
         onChange={onSearchHandle}
       />
