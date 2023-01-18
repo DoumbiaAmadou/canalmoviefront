@@ -1,11 +1,12 @@
 import React, { FC, ReactElement } from "react";
+import styles from "./V5Layout.module.scss";
 
 interface V5LayoutProps {
   children?: ReactElement[];
 }
 interface V5LayoutType extends FC<V5LayoutProps> {
   ({ children }: V5LayoutProps): JSX.Element;
-  TopMenu: any;
+  TopMenu?: any;
   ContentArea: any;
 }
 
@@ -23,10 +24,12 @@ const V5Layout: V5LayoutType = ({ children }: V5LayoutProps) => {
     .map((comp) => comp.props.children);
 
   return (
-    <div data-testid="V5Layout" className="container">
-      <div className="top_Menu"> {topMenu}</div>
-      <div> {contentArea}</div>
-    </div>
+    <div data-testid="V5Layout" className={styles.V5layout} >
+      <div className="container">
+        <div className="top_Menu"> {topMenu}</div>
+        <div> {contentArea}</div>
+      </div>
+    </div >
   );
 };
 V5Layout.TopMenu = () => "TopMenu";

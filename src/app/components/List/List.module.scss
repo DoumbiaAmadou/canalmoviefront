@@ -1,20 +1,21 @@
-.List {
-  
-}
+.Poster {
+  cursor: pointer;
 
-.Poster{
-cursor: pointer;
-  img{
-    z-index: -1; 
+  img {
+    z-index: -1;
     border-radius: 10%;
-   transition: transform .1s;
+    transition: transform .1s;
   }
-  img:hover{
 
-    -ms-transform: scale(1.2); /* IE 9 */
-    -webkit-transform: scale(1.2); /* Safari 3-8 */
+  img:hover {
+
+    -ms-transform: scale(1.2);
+    /* IE 9 */
+    -webkit-transform: scale(1.2);
+    /* Safari 3-8 */
     transform: scale(1.2);
   }
+
   box-sizing: border-box;
   display: inline-block;
   padding: 0 0.2vw;
@@ -22,5 +23,5 @@ cursor: pointer;
   vertical-align: top;
   white-space: normal;
   border-radius: 10%;
-    
+
 }

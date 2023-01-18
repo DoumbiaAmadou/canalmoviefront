@@ -1,13 +1,22 @@
 .Paginate {
-  div > input {
+  div>input {
     margin-top: 20em;
     width: 90%;
     margin: 0 20px;
-    
+    // --range-border-color: #311f59f9;
+    // --range-border-color:#6b549af9;
+    --range-thumb-hover-color: #4d3284f9;
+    --range-border-color: #6b549af9;
+    --range-active-border-color: rgb(99, 13, 142);
+    --range-thumb-border-color: var(--background-color);
+    --range-thumb-color: #6235bef9;
+
   }
-  div>label>u{
+
+  div>label>u {
     cursor: pointer;
   }
+
   div>span {
     text-align: center;
   }
