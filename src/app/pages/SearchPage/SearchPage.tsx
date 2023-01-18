@@ -15,7 +15,7 @@ import { searchService } from "../../services";
 import { useNavigate, useParams } from "react-router-dom";
 import Sort from "../../components/Sort/Sort";
 
-interface SearchPageProps {}
+interface SearchPageProps { }
 
 const SearchPage: FC<SearchPageProps> = () => {
   //hooks
@@ -53,10 +53,12 @@ const SearchPage: FC<SearchPageProps> = () => {
 
   const handleParams = (val: string) => {
     const asc = val.split("&").find((e) => e === "asc" || e === "desc");
-    return {
-      sort_by:
-        asc && asc === "asc" ? "original_title.asc" : "original_title.desc",
-    };
+    if (asc)
+      return {
+        sort_by:
+          asc === "asc" ? "popularity.asc" : "popularity.desc",
+      };
+    return {}
   };
   const handlePaginate = (val: number) => {
     setPage((prev) => val);
@@ -78,15 +80,15 @@ const SearchPage: FC<SearchPageProps> = () => {
     navigate("/");
     setParams((prev) => ({
       ...prev,
-      ...{ sort_by: asc ? "original_title.asc" : "original_title.desc" },
+      ...{ sort_by: asc ? "popularity.asc" : "popularity.desc" },
     }));
-  };
+  };//popularity.desc, popularity.asc
   const handledetail = (element: ResultType) => {
     navigate(
       "/detail/" +
-        element.id +
-        "/" +
-        (element.media_type ? element.media_type : mediaType)
+      element.id +
+      "/" +
+      (element.media_type ? element.media_type : mediaType)
     );
   };
   return (

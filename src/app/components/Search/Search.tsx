@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useCallback } from "react";
-import styles from "./Search.module.scss";
 import {
   Subject,
   Subscription,
@@ -8,7 +7,7 @@ import {
 } from "rxjs";
 
 interface SearchProps {
-  handleSearch?: (val: string) => void;
+  handleSearch: (val: string) => void;
 }
 
 let souscription: Subscription | null = null;
@@ -43,7 +42,7 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
   );
 
   return (
-    <div className={styles.Search} data-testid="Search">
+    <div data-testid="Search">
       <input
         type="text"
         className=""

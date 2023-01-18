@@ -9,7 +9,6 @@ interface ListProps {
 }
 const List: FC<ListProps> = ({ content = [], nbColum = 4, click }) => {
   /**
-   *
    * @param content ResultType[]
    * @param indexGrind :number
    * @returns JSX.Element
@@ -53,7 +52,7 @@ const List: FC<ListProps> = ({ content = [], nbColum = 4, click }) => {
   };
 
   return (
-    <div className={styles.List} data-testid="Test-List">
+    <div data-testid="Test-List">
       {content && content.length ? (
         formatContent().map((element, index) => listView(element, index))
       ) : (

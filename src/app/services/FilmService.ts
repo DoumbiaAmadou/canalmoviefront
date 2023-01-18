@@ -1,6 +1,6 @@
 const URL_BASE = "https://api.themoviedb.org/3/";
 const URL_ALL = "https://api.themoviedb.org/3/discover/";
-const URL_SEARCH = "https://api.themoviedb.org/3/search/multi?"
+const URL_SEARCH = "https://api.themoviedb.org/3/search/multi?";
 
 const QUERYPARAMS = {
   api_key: "92b418e837b833be308bbfb1fb2aca1e",
@@ -10,7 +10,8 @@ const QUERYPARAMS = {
   timezone: "America/New_York",
   include_null_first_air_dates: false,
   include_adult: true,
-  external_source: 'imdb_id, freebase_mid, freebase_id, tvdb_id, tvrage_id, facebook_id, twitter_id, instagram_id'
+  external_source:
+    "imdb_id, freebase_mid, freebase_id, tvdb_id, tvrage_id, facebook_id, twitter_id, instagram_id",
 };
 
 export interface QueryType {
@@ -49,7 +50,7 @@ export interface ResultType {
   poster_path: string;
   vote_average: number;
   vote_count: number;
-  media_type?: string
+  media_type?: string;
 }
 
 export interface PageSearchType {
@@ -155,10 +156,13 @@ export interface DetailType {
   vote_average: number;
   vote_count: number;
 }
+
 export type CustomResult = PageSearchType | DetailType;
+
 export const isPageSearchType = (t: CustomResult): t is PageSearchType => {
   return (t as PageSearchType).total_pages !== undefined;
 };
+
 const filmFetch = async (url: string) => {
   return await fetch(url)
     .then((res) => {
@@ -169,21 +173,34 @@ const filmFetch = async (url: string) => {
     .then((value: PageSearchType | DetailType) => value);
 };
 
-const makeDetailUrl = (id: number, mediaType: string = 'tv') => {
+const makeDetailUrl = (id: number, mediaType: string = "tv") => {
   const { api_key, external_source } = QUERYPARAMS;
-  return URL_BASE + `${mediaType}/${id}?` + jsonToQuery({ api_key, external_source });
+  return (
+    URL_BASE + `${mediaType}/${id}?` + jsonToQuery({ api_key, external_source })
+  );
 };
 
 export const detailFind = async (id: number, mediaType: string) => {
   return await filmFetch(makeDetailUrl(id, mediaType));
 };
 
-export const allContentsService = async (custom: QueryTypeUpdated = {}, mediaType: string = 'tv') => {
-  return await filmFetch(URL_ALL + `${mediaType}?` + jsonToQuery({ ...QUERYPARAMS, ...custom }));
+export const allContentsService = async (
+  custom: QueryTypeUpdated = {},
+  mediaType: string = "tv"
+) => {
+  return await filmFetch(
+    URL_ALL + `${mediaType}?` + jsonToQuery({ ...QUERYPARAMS, ...custom })
+  );
 };
+
 export const searchService = async (custom: QueryTypeUpdated = {}) => {
-  return await filmFetch(URL_SEARCH + jsonToQuery({
-    ...{ api_key: QUERYPARAMS.api_key },
-    ...{ query: custom.query, page: custom.page, include_adult: custom.include_adult }
-  }));
+  return await filmFetch(
+    URL_SEARCH +
+      jsonToQuery({
+        api_key: QUERYPARAMS.api_key,
+        query: custom.query,
+        page: custom.page,
+        include_adult: custom.include_adult,
+      })
+  );
 };
