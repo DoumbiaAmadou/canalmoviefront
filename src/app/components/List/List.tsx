@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styles from "./List.module.scss";
 import { BASE_URL, ResultType } from "../../services";
-//navifate instead of history in react router dom@6
 
 interface ListProps {
   content?: any[];
@@ -54,11 +53,11 @@ const List: FC<ListProps> = ({ content = [], nbColum = 4, click }) => {
   };
 
   return (
-    <div className={styles.List} data-testid="List">
-      {content ? (
+    <div className={styles.List} data-testid="Test-List">
+      {content && content.length ? (
         formatContent().map((element, index) => listView(element, index))
       ) : (
-        <span>
+        <span data-testid="Test-Empty">
           <h1>Empty Film</h1>
         </span>
       )}

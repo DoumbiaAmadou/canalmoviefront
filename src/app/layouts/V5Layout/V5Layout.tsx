@@ -12,14 +12,12 @@ interface V5LayoutType extends FC<V5LayoutProps> {
 const V5Layout: V5LayoutType = ({ children }: V5LayoutProps) => {
   const topMenu = children
     ?.filter((comp) => {
-      // console.warn("Mylog=>", comp?.type);
       return comp?.type === V5Layout.TopMenu;
     })
     .map((comp) => comp.props.children);
 
   const contentArea = children
     ?.filter((comp) => {
-      //console.warn("Mylog=>", comp?.type);
       return comp.type === V5Layout.ContentArea;
     })
     .map((comp) => comp.props.children);

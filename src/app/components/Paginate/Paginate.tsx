@@ -25,15 +25,17 @@ const Paginate: FC<PaginateProps> = ({
       <div>
         <label>
           <u
+            role="prev"
             onClick={(e) =>
               handleChange && handleChange("" + Math.max(1, current - 1))
             }
           >
             {"<< Prev "}
           </u>
-          &nbsp;&nbsp; Page: from {1} to {total}, current Page: {current}
-          &nbsp; &nbsp; &nbsp;
+          &nbsp; Page: from {1} to {total}, current Page: {current}
+          &nbsp;
           <u
+            role="next"
             onClick={(e) =>
               handleChange && handleChange("" + Math.min(current + 1, total))
             }

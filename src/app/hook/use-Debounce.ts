@@ -21,14 +21,11 @@ export const useDebounce = (
         distinctUntilChanged()
       ).subscribe((val: unknown) => {
         if (handleCall) {
-          console.log("debouce", val, " with type ", typeof val);
           if (typeof val === "string") handleCall(val);
         }
       });
-      console.log("Monted");
     }
     return () => {
-      console.log("UnMonted");
       if (souscription) {
         souscription.unsubscribe();
         souscription = null;
@@ -40,7 +37,6 @@ export const useDebounce = (
     (e: React.ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();
       const value = e.target.value;
-      console.log("Next", value);
       Subject$.next(value);
     },
     [Subject$]

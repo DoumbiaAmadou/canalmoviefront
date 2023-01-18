@@ -9,10 +9,9 @@ import {
 } from "../../services/FilmService";
 import { BASE_URL, BASE_URLWIDE } from "../../services";
 
-interface DetailPageProps { }
+interface DetailPageProps {}
 
 const DetailPage: FC<DetailPageProps> = () => {
-
   //hooks
   const [detailElement, setDetailElement] = useState<DetailType>();
   let navigate = useNavigate();
@@ -62,50 +61,55 @@ const DetailPage: FC<DetailPageProps> = () => {
             <kbd
               className="warning"
               onClick={() => {
-                navigate("/");
+                navigate("/", { replace: true });
               }}
             >
               {" "}
               {"<<  Back"}
             </kbd>
           </span>
+
           <div className={styles.Center}>
             <strong>{detailElement?.name}</strong>
+            <strong>{!detailElement && "Content not found"}</strong>
           </div>
         </header>
-        <div className={"grid " + styles.Blur}>
-          <div className={styles.Center}>
-            {detailElement && (
-              <img src={BASE_URL + detailElement?.poster_path} alt="" />
-            )}
+        {detailElement && (
+          <div className={"grid " + styles.Blur}>
+            <div className={styles.Center}>
+              {detailElement && (
+                <img src={BASE_URL + detailElement?.poster_path} alt="" />
+              )}
+            </div>
+            <div>
+              {detailElement?.genres.map((e) => (
+                <span key={e.id}>
+                  <mark>{e.name} </mark> &nbsp;
+                </span>
+              ))}
+              <br />
+              {detailElement?.production_companies.map(
+                (e) =>
+                  e.logo_path && (
+                    <strong>
+                      <span key={e.id}>
+                        &nbsp;
+                        <img
+                          className={styles.Production}
+                          src={BASE_URL + e.logo_path}
+                          alt=""
+                        />
+                        &nbsp;
+                        {e.name} &nbsp;
+                      </span>
+                    </strong>
+                  )
+              )}
+              <br />
+              <span>{detailElement?.overview}</span>
+            </div>
           </div>
-          <div>
-            {detailElement?.genres.map((e) => (
-              <span key={e.id}>
-                <mark>{e.name} </mark> &nbsp;
-              </span>
-            ))}
-            <br />
-            {detailElement?.production_companies.map(
-              (e) =>
-                e.logo_path && (
-                  <strong>
-                    <span key={e.id}>
-                      &nbsp;
-                      <img
-                        className={styles.Production}
-                        src={BASE_URL + e.logo_path}
-                        alt=""
-                      />&nbsp;
-                      {e.name} &nbsp;
-                    </span>
-                  </strong>
-                )
-            )}
-            <br />
-            <span>{detailElement?.overview}</span>
-          </div>
-        </div>
+        )}
 
         <footer>{detailElement?.seasons?.map((e) => makeSeasons(e))}</footer>
       </article>

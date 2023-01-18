@@ -4,18 +4,18 @@ import { Search } from "../../components";
 import { List } from "../../components";
 import {
   CustomResult,
-  DetailType,
   QueryTypeUpdated,
   allContentsService,
   isPageSearchType,
 } from "../../services";
 
-import type { ResultType, PageSearchType } from "../../services";
+import type { ResultType } from "../../services";
 import { Paginate } from "../../components/";
 import { searchService } from "../../services";
 import { useNavigate, useParams } from "react-router-dom";
+import Sort from "../../components/Sort/Sort";
 
-interface SearchPageProps { }
+interface SearchPageProps {}
 
 const SearchPage: FC<SearchPageProps> = () => {
   //hooks
@@ -34,19 +34,17 @@ const SearchPage: FC<SearchPageProps> = () => {
       spreadParams = {
         ...handleParams(queryString?.params),
       };
-    }
-    spreadParams = {
-      ...spreadParams,
-      ...params,
-      ...{ query: query, page: page },
-    };
-    console.log("ppp", JSON.stringify(spreadParams));
+    } else
+      spreadParams = {
+        ...params,
+        ...{ query: query, page: page, mediaType },
+      };
     if (query === "") {
-      allContentsService(spreadParams).then(fillAllContent);
+      allContentsService(spreadParams, mediaType).then(fillAllContent);
     } else {
       searchService(spreadParams).then(fillAllContent);
     }
-  }, [page, query, params]);
+  }, [page, query, queryString?.params, params, mediaType]);
 
   const handleSearch = useCallback((val: string) => {
     setPage(1);
@@ -55,13 +53,7 @@ const SearchPage: FC<SearchPageProps> = () => {
 
   const handleParams = (val: string) => {
     const asc = val.split("&").find((e) => e === "asc" || e === "desc");
-    // const rpage = val
-    //   .split("&")
-    //   .find((e) => e.includes("page="))
-    //   ?.replace("page=", "");
-    // console.log("rpage ", rpage);
     return {
-      // page: rpage ? rpage : "1",
       sort_by:
         asc && asc === "asc" ? "original_title.asc" : "original_title.desc",
     };
@@ -90,12 +82,11 @@ const SearchPage: FC<SearchPageProps> = () => {
     }));
   };
   const handledetail = (element: ResultType) => {
-    console.log("redirect", element);
     navigate(
       "/detail/" +
-      element.id +
-      "/" +
-      (element.media_type ? element.media_type : mediaType)
+        element.id +
+        "/" +
+        (element.media_type ? element.media_type : mediaType)
     );
   };
   return (
@@ -103,16 +94,7 @@ const SearchPage: FC<SearchPageProps> = () => {
       <V5Layout.TopMenu>
         <h1>Welcome to Canal Movie search Engine. </h1>
         <Search handleSearch={handleSearch}></Search>
-
-        {query === "" && <p>
-          <kbd className="warning" onClick={() => sort(true)}>
-            ASC
-          </kbd>{" "}
-          &nbsp; &nbsp; &nbsp;
-          <kbd className="warning" onClick={() => sort(false)}>
-            DESC
-          </kbd>
-        </p>}
+        <Sort query={query} sort={sort} setCatalogue={setMediaType}></Sort>
         <Paginate
           current={page}
           total={totalPage}
