@@ -1,6 +1,8 @@
 # Canal Movie Front  
-
- this project is a frontend App for [themoviedb](https://developers.themoviedb.org/3/movies/get-movie-videos) website
+  
+hosteing in https://movie-two-tau.vercel.app/   
+ 
+ this project is a frontend App for [themoviedb](https://developers.themoviedb.org/3/movies/get-movie-videos) website   
 
 ## Table of contents
 
