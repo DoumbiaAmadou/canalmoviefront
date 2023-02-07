@@ -24,12 +24,12 @@ const V5Layout: V5LayoutType = ({ children }: V5LayoutProps) => {
     .map((comp) => comp.props.children);
 
   return (
-    <div data-testid="V5Layout" className={styles.V5layout} >
-      <div className="container">
+    <div data-testid="V5Layout" className={styles.V5layout}>
+      <div className="V5LayoutContenair">
         <div className="top_Menu"> {topMenu}</div>
         <div> {contentArea}</div>
       </div>
-    </div >
+    </div>
   );
 };
 V5Layout.TopMenu = () => "TopMenu";

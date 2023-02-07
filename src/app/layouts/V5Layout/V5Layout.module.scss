@@ -1,5 +1,21 @@
-.V5layout{
+.V5layout {
   background-color: rgba(74, 66, 97, 0.435);
-  margin: 0 20% ;
-  padding: 10px ;
+  margin: 0 10%;
+  padding: 10px;
+  align-items: center;
+}
+@media screen and (max-width: 990px) {
+  /* Rédigez les propriétés CSS ici */
+  .V5layout {
+    .V5LayoutContenair {
+      padding: 10% 20%;
+    }
+  }
+}
+@media screen and (max-width: 750px) {
+  /* Rédigez les propriétés CSS ici */
+  .V5layout {
+    margin: 0 5%;
+    padding: 5px;
+  }
 }

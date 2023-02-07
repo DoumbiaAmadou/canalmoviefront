@@ -4,11 +4,10 @@
   img {
     z-index: -1;
     border-radius: 10%;
-    transition: transform .1s;
+    transition: transform 0.1s;
   }
 
   img:hover {
-
     -ms-transform: scale(1.2);
     /* IE 9 */
     -webkit-transform: scale(1.2);
@@ -23,5 +22,30 @@
   vertical-align: top;
   white-space: normal;
   border-radius: 10%;
+}
+@media screen and (max-width: 990px) {
+  /* Rédigez les propriétés CSS ici */
+  .Poster {
+    display: inline-block;
+    img {
+      padding: 1px 25%;
+      width: 100%;
+      border-radius: 26%;
+      transition: transform 0.1s;
+    }
+  }
+}
 
+@media screen and (max-width: 690px) {
+  /* Rédigez les propriétés CSS ici */
+  .Poster {
+    display: inline-block;
+
+    img {
+      padding: 1px 10%;
+      width: 100%;
+      border-radius: 14%;
+      transition: transform 0.1s;
+    }
+  }
 }
