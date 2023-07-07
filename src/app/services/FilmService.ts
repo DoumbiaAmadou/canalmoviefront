@@ -32,7 +32,7 @@ export interface QueryTypeUpdated {
 const jsonToQuery = (obj: QueryTypeUpdated) => {
   return Object.keys(obj).reduce(
     (acc: string, value: string) => `${acc}${value}=${obj[value]}&`,
-    ""
+    "",
   );
 };
 
@@ -186,10 +186,10 @@ export const detailFind = async (id: number, mediaType: string) => {
 
 export const allContentsService = async (
   custom: QueryTypeUpdated = {},
-  mediaType: string = "tv"
+  mediaType: string = "tv",
 ) => {
   return await filmFetch(
-    URL_ALL + `${mediaType}?` + jsonToQuery({ ...QUERYPARAMS, ...custom })
+    URL_ALL + `${mediaType}?` + jsonToQuery({ ...QUERYPARAMS, ...custom }),
   );
 };
 
@@ -201,6 +201,6 @@ export const searchService = async (custom: QueryTypeUpdated = {}) => {
         query: custom.query,
         page: custom.page,
         include_adult: custom.include_adult,
-      })
+      }),
   );
 };

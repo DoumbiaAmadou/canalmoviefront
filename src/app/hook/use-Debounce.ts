@@ -10,7 +10,7 @@ let souscription: Subscription | null = null;
 
 export const useDebounce = (
   handleCall: (value: string) => void,
-  delay: number = 500
+  delay: number = 500,
 ) => {
   const Subject$ = useMemo(() => new Subject(), []);
 
@@ -18,7 +18,7 @@ export const useDebounce = (
     if (!souscription) {
       souscription = Subject$.pipe(
         debounceTime(delay),
-        distinctUntilChanged()
+        distinctUntilChanged(),
       ).subscribe((val: unknown) => {
         if (handleCall) {
           if (typeof val === "string") handleCall(val);
@@ -39,7 +39,7 @@ export const useDebounce = (
       const value = e.target.value;
       Subject$.next(value);
     },
-    [Subject$]
+    [Subject$],
   );
 
   return [handleNext];

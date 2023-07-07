@@ -12,10 +12,10 @@ describe("it should mount SearchPage Correctly ", () => {
         <Routes>
           <Route path="/:params?" element={<SearchPage />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
     const searchPage = screen.getByText(
-      "Welcome to Canal Movie search Engine."
+      "Welcome to Canal Movie search Engine.",
     );
     const asc = screen.getByText("ASC");
     expect(searchPage).toBeInTheDocument();

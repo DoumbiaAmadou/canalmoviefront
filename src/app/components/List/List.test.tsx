@@ -31,7 +31,7 @@ describe("List", () => {
   });
   test("It should mount correctly One Elrmrnt", () => {
     render(<List content={DATA} />);
-    const nbChild = screen.getByTestId("Test-List").children.length;
+    const nbChild = React.Children.count(screen.getByTestId("Test-List"));
     expect(nbChild).toBe(1);
   });
 });

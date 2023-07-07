@@ -11,7 +11,7 @@ describe("<DetailPage />", () => {
         <Routes>
           <Route path="/:params?" element={<DetailPage />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
     const searchPage = screen.getByTestId("DetailPage");
     expect(searchPage).toBeInTheDocument();

@@ -1,5 +1,5 @@
 .Paginate {
-  div>input {
+  div > input {
     margin-top: 20em;
     width: 90%;
     margin: 0 20px;
@@ -10,14 +10,13 @@
     --range-active-border-color: rgb(99, 13, 142);
     --range-thumb-border-color: var(--background-color);
     --range-thumb-color: #6235bef9;
-
   }
 
-  div>label>u {
+  div > label > u {
     cursor: pointer;
   }
 
-  div>span {
+  div > span {
     text-align: center;
   }
 }
