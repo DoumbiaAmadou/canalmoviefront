@@ -16,7 +16,7 @@ const Paginate: FC<PaginateProps> = ({
     (val: string) => {
       if (currentChange) currentChange(parseInt(val));
     },
-    [currentChange],
+    [currentChange]
   );
   const [handleNext] = useDebounce(handleChange);
 
@@ -49,7 +49,7 @@ const Paginate: FC<PaginateProps> = ({
           className="paginateInput"
           min={1}
           type="range"
-          value={current}
+          defaultValue={current}
           onChange={handleNext}
           max={total}
         />
