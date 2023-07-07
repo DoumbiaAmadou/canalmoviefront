@@ -2,23 +2,42 @@
   cursor: pointer;
   box-sizing: border-box;
   display: inline-block;
-  padding: 0.2vw 0.2vw;
-  margin: 0.2vw 0.2vw;
+  padding: 5px 10px 0 15px;
+  margin: 15px 5px 15px 5px;
+  max-height: 400px;
   position: relative;
   vertical-align: top;
   white-space: normal;
-  border-radius: 10%;
-  box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 5;
   border-radius: 15px;
+  background-color: #463f3fb8;
   overflow: hidden;
-  background: rgba(42, 30, 98, 0.436);
+  min-height: 320px;
+  font-size: 19px;
+  height: 300px;
   transition: box-shadow 0.2s ease-in;
   cursor: pointer;
-
+  span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    height: 50px;
+    background-color: #463f3fb8;
+    h6 {
+      font-size: 14px;
+      padding: 5px;
+    }
+  }
   img {
     z-index: -1;
-    border-radius: 10%;
+    border-radius: 10% 10% 0 0;
     transition: transform 0.1s;
+    height: 85%;
+    object-fit: scale-down;
   }
 
   img:hover {
@@ -37,10 +56,15 @@
     margin-left: auto;
     margin-right: auto;
     img {
-      padding: 20px 20px;
+      padding: 20px 20px 60px 20px;
       width: 100%;
-      border-radius: 15px;
+      border-radius: 8%;
       transition: transform 0.1s;
+    }
+    span {
+      h6 {
+        text-align: center;
+      }
     }
   }
 }
@@ -53,10 +77,15 @@
     margin-left: auto;
     margin-right: auto;
     img {
-      padding: 10%;
+      padding: 20px 20px 60px 20px;
       width: 100%;
-      border-radius: 14%;
+      border-radius: 8%;
       transition: transform 0.1s;
+    }
+    span {
+      h6 {
+        text-align: center;
+      }
     }
   }
 }

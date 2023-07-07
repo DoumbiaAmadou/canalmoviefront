@@ -24,7 +24,6 @@ const Sort: FC<SortProps> = ({ query, sort, setCatalogue }) => {
           </kbd>{" "}
           <br />
           <br />
-          <br />
           Catalogue : &nbsp;
           <kbd
             className="warning"
