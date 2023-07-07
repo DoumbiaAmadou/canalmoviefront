@@ -4,7 +4,7 @@ import "@testing-library/jest-dom/extend-expect";
 import SearchPage from "./SearchPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-describe("it should mount SearchPage Correctly ", () => {
+describe("it should mount SearchPage Correctly", () => {
   jest.setTimeout(10000);
   test("it should mount SearchPage with Welcome message", () => {
     render(
@@ -12,10 +12,10 @@ describe("it should mount SearchPage Correctly ", () => {
         <Routes>
           <Route path="/:params?" element={<SearchPage />} />
         </Routes>
-      </BrowserRouter>,
+      </BrowserRouter>
     );
     const searchPage = screen.getByText(
-      "Welcome to Canal Movie search Engine.",
+      "Welcome to Canal Movie search Engine."
     );
     const asc = screen.getByText("ASC");
     expect(searchPage).toBeInTheDocument();

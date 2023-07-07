@@ -1,6 +1,6 @@
 .V5layout {
   background-color: rgba(74, 66, 97, 0.435);
-  margin: 0 20%;
+  margin: 0 15%;
   padding: 10px;
   background-attachment: fixed !important;
   align-items: center;
@@ -8,7 +8,7 @@
 @media screen and (max-width: 750px) {
   /* Rédigez les propriétés CSS ici */
   .V5layout {
-    margin: 0 5%;
+    margin: 0 2%;
     padding: 5px;
   }
 }
