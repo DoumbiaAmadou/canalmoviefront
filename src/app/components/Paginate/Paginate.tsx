@@ -26,21 +26,23 @@ const Paginate: FC<PaginateProps> = ({
         <label>
           <u
             aria-label={"prev"}
+            role="button"
             onClick={(e) =>
               handleChange && handleChange("" + Math.max(1, current - 1))
             }
           >
             {"<< Prev "}
           </u>
-          &nbsp; Page: from {1} to {total}, current Page: {current}
-          &nbsp;
+          &nbsp; Page: from {1} to {total}, current Page: <b>{current} </b>
+          &nbsp; &nbsp;
           <u
             aria-label="next"
+            role="button"
             onClick={(e) =>
               handleChange && handleChange("" + Math.min(current + 1, total))
             }
           >
-            {"Next >>"}
+            {" Next >>"}
           </u>
           &nbsp;
         </label>

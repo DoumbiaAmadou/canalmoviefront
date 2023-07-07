@@ -4,5 +4,7 @@
   "docwriter.progress.trackTypes": true,
   "docwriter.language": "English",
   "npm-scripts.showStartNotification": false,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true
 }

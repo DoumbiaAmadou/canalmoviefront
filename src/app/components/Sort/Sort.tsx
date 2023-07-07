@@ -15,22 +15,30 @@ const Sort: FC<SortProps> = ({ query, sort, setCatalogue }) => {
       {query === "" && (
         <p>
           Sort By Popularity: &nbsp;
-          <kbd className="warning" onClick={() => sort(true)}>
+          <kbd className="warning" role="button" onClick={() => sort(true)}>
             ASC
           </kbd>{" "}
           &nbsp; &nbsp; &nbsp;
-          <kbd className="warning" onClick={() => sort(false)}>
+          <kbd className="warning" role="button" onClick={() => sort(false)}>
             DESC
           </kbd>{" "}
           <br />
           <br />
           <br />
           Catalogue : &nbsp;
-          <kbd className="warning" onClick={() => setCatalogue(TV)}>
+          <kbd
+            className="warning"
+            role="button"
+            onClick={() => setCatalogue(TV)}
+          >
             TV
           </kbd>
           &nbsp; &nbsp; &nbsp;
-          <kbd className="warning" onClick={() => setCatalogue(MOVIE)}>
+          <kbd
+            className="warning"
+            role="button"
+            onClick={() => setCatalogue(MOVIE)}
+          >
             MOVIE
           </kbd>
         </p>

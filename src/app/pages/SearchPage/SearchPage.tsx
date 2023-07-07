@@ -21,7 +21,7 @@ const SearchPage: FC<SearchPageProps> = () => {
   //hooks
   let queryString = useParams();
   const [params, setParams] = useState<QueryTypeUpdated>();
-  const [mediaType, setMediaType] = useState<string>("tv");
+  const [mediaType, setMediaType] = useState<string>("movie");
   const [allContent, setAllContent] = useState<ResultType[]>([]);
   const [page, setPage] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
@@ -87,13 +87,15 @@ const SearchPage: FC<SearchPageProps> = () => {
       "/detail/" +
         element.id +
         "/" +
-        (element.media_type ? element.media_type : mediaType),
+        (element.media_type ? element.media_type : mediaType)
     );
   };
   return (
     <V5Layout>
       <V5Layout.TopMenu>
-        <h1>Welcome to Canal Movie search Engine. </h1>
+        <h1 style={{ textAlign: "center" }}>
+          Welcome to Canal Movie search Engine.{" "}
+        </h1>
         <Search handleSearch={handleSearch}></Search>
         <Sort query={query} sort={sort} setCatalogue={setMediaType}></Sort>
         <Paginate

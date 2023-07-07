@@ -61,6 +61,7 @@ const DetailPage = () => {
               <span>
                 <kbd
                   className="warning"
+                  role="button"
                   onClick={() => {
                     navigate("/", { replace: true });
                   }}
