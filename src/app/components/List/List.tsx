@@ -26,7 +26,8 @@ const List: FC<ListProps> = ({ content = [], nbColum = 4, click }) => {
               <img src={BASE_URL + element.poster_path} alt="" />
             )}
             <span>
-              <h6>{element.name}</h6>
+              {/*TODO: use TypeGuard Here */}
+              {element.name ?? <h6>{element.name ?? element.title}</h6>}
             </span>
           </div>
         ))}

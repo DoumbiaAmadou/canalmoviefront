@@ -9,7 +9,7 @@ const QUERYPARAMS = {
   page: "1",
   timezone: "America/New_York",
   include_null_first_air_dates: false,
-  include_adult: true,
+  include_adult: false,
   external_source:
     "imdb_id, freebase_mid, freebase_id, tvdb_id, tvrage_id, facebook_id, twitter_id, instagram_id",
 };
@@ -35,21 +35,25 @@ const jsonToQuery = (obj: QueryTypeUpdated) => {
     "",
   );
 };
-
 export interface ResultType {
+  adult?: boolean;
   backdrop_path: string;
-  first_air_date: string;
   genre_ids: number[];
   id: number;
-  name: string;
-  origin_country: string[];
   original_language: string;
-  original_name: string;
+  original_title?: string;
   overview: string;
   popularity: number;
   poster_path: string;
+  release_date?: string;
+  title?: string;
+  video?: boolean;
   vote_average: number;
   vote_count: number;
+  first_air_date: string;
+  name?: string;
+  origin_country: string[];
+  original_name?: string;
   media_type?: string;
 }
 
@@ -186,7 +190,7 @@ export const detailFind = async (id: number, mediaType: string) => {
 
 export const allContentsService = async (
   custom: QueryTypeUpdated = {},
-  mediaType: string = "tv",
+  mediaType: string = "movie",
 ) => {
   return await filmFetch(
     URL_ALL + `${mediaType}?` + jsonToQuery({ ...QUERYPARAMS, ...custom }),
@@ -196,11 +200,11 @@ export const allContentsService = async (
 export const searchService = async (custom: QueryTypeUpdated = {}) => {
   return await filmFetch(
     URL_SEARCH +
-      jsonToQuery({
-        api_key: QUERYPARAMS.api_key,
-        query: custom.query,
-        page: custom.page,
-        include_adult: custom.include_adult,
-      }),
+    jsonToQuery({
+      api_key: QUERYPARAMS.api_key,
+      query: custom.query,
+      page: custom.page,
+      include_adult: custom.include_adult,
+    }),
   );
 };
