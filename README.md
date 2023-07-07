@@ -3,8 +3,6 @@
 this project is a frontend App for [themoviedb](https://developers.themoviedb.org/3/movies/get-movie-videos) website
 hosting in https://movie-two-tau.vercel.app/
 
-this project is a frontend App for [themoviedb](https://developers.themoviedb.org/3/movies/get-movie-videos) website
-
 ## Table of contents
 
 - [General info](#general-info)
