@@ -3,4 +3,12 @@
   margin: 0 20%;
   padding: 10px;
   background-attachment: fixed !important;
+  align-items: center;
+}
+@media screen and (max-width: 750px) {
+  /* Rédigez les propriétés CSS ici */
+  .V5layout {
+    margin: 0 5%;
+    padding: 5px;
+  }
 }
