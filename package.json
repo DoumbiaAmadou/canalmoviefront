@@ -46,7 +46,6 @@
     "generate-react-cli": "^8.2.0",
     "react-router-dom": "^6.6.2",
     "rxjs": "^7.8.0",
-    "sass": "^1.57.1",
-    "typescript": "^5.1.6"
+    "sass": "^1.57.1"
   }
 }
