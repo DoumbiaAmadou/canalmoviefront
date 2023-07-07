@@ -1,4 +1,5 @@
-import { FC, useEffect, useState, useCallback } from "react";
+import React from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./DetailPage.module.scss";
 import { useParams, useNavigate } from "react-router-dom";
 import {
@@ -8,22 +9,13 @@ import {
   Season,
 } from "../../services/FilmService";
 import { BASE_URL, BASE_URLWIDE } from "../../services";
-import { V5Layout } from '../../layouts';
+import { V5Layout } from "../../layouts";
 
-interface DetailPageProps { }
-
-const DetailPage: FC<DetailPageProps> = () => {
+const DetailPage = () => {
   //hooks
   const [detailElement, setDetailElement] = useState<DetailType>();
   let navigate = useNavigate();
   let params = useParams();
-
-  //useEffect
-  useEffect(() => {
-    getDetail();
-  }, []);
-
-  //functions
   const getDetail = useCallback(async () => {
     if (params.mediaType && typeof params.contentID === "string") {
       const detail = await detailFind(
@@ -33,6 +25,13 @@ const DetailPage: FC<DetailPageProps> = () => {
       if (!isPageSearchType(detail)) setDetailElement(detail);
     }
   }, [params.mediaType, params.contentID]);
+
+  //useEffect
+  useEffect(() => {
+    getDetail();
+  }, [getDetail]);
+
+  //functions
 
   const makeSeasons = (e: Season) => {
     if (e && e.overview && e.overview.length > 1)
@@ -46,22 +45,18 @@ const DetailPage: FC<DetailPageProps> = () => {
 
   return (
     <V5Layout>
-      <V5Layout.TopMenu>
-
-      </V5Layout.TopMenu>
+      <V5Layout.TopMenu></V5Layout.TopMenu>
       <V5Layout.ContentArea>
-        <div
-          className={styles.DetailPage}
-
-          data-testid="DetailPage"
-        >
-          <article style={
-            detailElement && {
-              background:
-                "url(" + BASE_URLWIDE + detailElement?.backdrop_path + ")",
-              backgroundSize: "cover",
+        <div className={styles.DetailPage} data-testid="DetailPage">
+          <article
+            style={
+              detailElement && {
+                background:
+                  "url(" + BASE_URLWIDE + detailElement?.backdrop_path + ")",
+                backgroundSize: "cover",
+              }
             }
-          }>
+          >
             <header>
               <span>
                 <kbd
@@ -117,13 +112,13 @@ const DetailPage: FC<DetailPageProps> = () => {
               </div>
             )}
 
-            <footer>{detailElement?.seasons?.map((e) => makeSeasons(e))}</footer>
+            <footer>
+              {detailElement?.seasons?.map((e) => makeSeasons(e))}
+            </footer>
           </article>
         </div>
       </V5Layout.ContentArea>
-
     </V5Layout>
-
   );
 };
 export default DetailPage;

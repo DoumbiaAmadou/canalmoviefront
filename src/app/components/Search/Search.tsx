@@ -30,7 +30,7 @@ const Search: FC<SearchProps> = ({ handleSearch }) => {
         souscription = null;
       }
     };
-  }, []);
+  }, [handleSearch]);
 
   const onSearchHandle = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

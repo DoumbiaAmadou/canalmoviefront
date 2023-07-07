@@ -4,11 +4,10 @@
   img {
     z-index: -1;
     border-radius: 10%;
-    transition: transform .1s;
+    transition: transform 0.1s;
   }
 
   img:hover {
-
     -ms-transform: scale(1.2);
     /* IE 9 */
     -webkit-transform: scale(1.2);
@@ -23,5 +22,4 @@
   vertical-align: top;
   white-space: normal;
   border-radius: 10%;
-
 }

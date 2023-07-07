@@ -16,7 +16,7 @@ const Paginate: FC<PaginateProps> = ({
     (val: string) => {
       if (currentChange) currentChange(parseInt(val));
     },
-    [currentChange]
+    [currentChange],
   );
   const [handleNext] = useDebounce(handleChange);
 
@@ -25,7 +25,7 @@ const Paginate: FC<PaginateProps> = ({
       <div>
         <label>
           <u
-            role="prev"
+            aria-label={"prev"}
             onClick={(e) =>
               handleChange && handleChange("" + Math.max(1, current - 1))
             }
@@ -35,7 +35,7 @@ const Paginate: FC<PaginateProps> = ({
           &nbsp; Page: from {1} to {total}, current Page: {current}
           &nbsp;
           <u
-            role="next"
+            aria-label="next"
             onClick={(e) =>
               handleChange && handleChange("" + Math.min(current + 1, total))
             }

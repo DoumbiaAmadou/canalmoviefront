@@ -13,7 +13,8 @@ const Sort: FC<SortProps> = ({ query, sort, setCatalogue }) => {
   return (
     <>
       {query === "" && (
-        <p>Sort By Popularity: &nbsp;
+        <p>
+          Sort By Popularity: &nbsp;
           <kbd className="warning" onClick={() => sort(true)}>
             ASC
           </kbd>{" "}
