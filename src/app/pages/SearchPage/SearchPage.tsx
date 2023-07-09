@@ -93,9 +93,7 @@ const SearchPage: FC<SearchPageProps> = () => {
   return (
     <V5Layout>
       <V5Layout.TopMenu>
-        <h1 style={{ textAlign: "center" }}>
-          Welcome to Canal Movie search Engine.{" "}
-        </h1>
+        <h1 style={{ textAlign: "center" }}>Movie search Engine. </h1>
         <Search handleSearch={handleSearch}></Search>
         <Sort query={query} sort={sort} setCatalogue={setMediaType}></Sort>
         <Paginate
@@ -106,7 +104,7 @@ const SearchPage: FC<SearchPageProps> = () => {
         <br />
       </V5Layout.TopMenu>
       <V5Layout.ContentArea>
-        <List content={allContent} click={handledetail}></List>
+        <List contents={allContent} click={handledetail}></List>
       </V5Layout.ContentArea>
     </V5Layout>
   );

@@ -22,15 +22,17 @@ const DATA: ResultType[] = [
     media_type: "TV",
   },
 ];
+const mockClick = jest.fn((val: any) => {});
+
 describe("List", () => {
   test("Empty message, should Mount", () => {
-    render(<List />);
+    render(<List click={mockClick} />);
 
     const list = screen.getByTestId("Test-Empty");
     expect(list).toBeInTheDocument();
   });
   test("It should mount correctly One Elrmrnt", () => {
-    render(<List content={DATA} />);
+    render(<List contents={DATA} click={mockClick} />);
     const nbChild = React.Children.count(screen.getByTestId("Test-List"));
     expect(nbChild).toBe(1);
   });
