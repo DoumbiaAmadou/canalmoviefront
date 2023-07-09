@@ -1,91 +1,59 @@
-.Poster {
-  cursor: pointer;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 5px 10px 0 15px;
-  margin: 15px 5px 15px 5px;
-  max-height: 400px;
-  position: relative;
-  vertical-align: top;
-  white-space: normal;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 5;
-  border-radius: 15px;
-  background-color: #463f3fb8;
-  overflow: hidden;
-  min-height: 320px;
-  font-size: 19px;
-  height: 300px;
-  transition: box-shadow 0.2s ease-in;
-  cursor: pointer;
-  span {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    height: 50px;
+.Grid {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 20px;
+  height: auto;
+  .Poster {
+    cursor: pointer;
     background-color: #463f3fb8;
-    h6 {
-      font-size: 14px;
-      padding: 5px;
-    }
-  }
-  img {
-    z-index: -1;
-    border-radius: 10% 10% 0 0;
-    transition: transform 0.1s;
-    height: 85%;
-    object-fit: scale-down;
-  }
-
-  img:hover {
-    -ms-transform: scale(1.2);
-    /* IE 9 */
-    -webkit-transform: scale(1.2);
-    /* Safari 3-8 */
-    transform: scale(1.2);
-  }
-}
-@media screen and (max-width: 990px) {
-  /* Rédigez les propriétés CSS ici */
-  .Poster {
-    display: inline-block;
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    img {
-      padding: 20px 20px 60px 20px;
-      width: 100%;
-      border-radius: 8%;
-      transition: transform 0.1s;
-    }
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 19px;
+    height: 350px;
+    min-height: 320px;
+    overflow: hidden;
+    padding: 5px 1px 10px 1px;
+    position: relative;
+    transition: box-shadow 0.2s ease-in;
+    cursor: pointer;
     span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+      height: 60px;
+      background-color: #656e70d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px 0 0 0;
       h6 {
-        text-align: center;
+        font-size: 14px;
+        padding: 5px;
+        margin: 0;
+        text-shadow: 2px 2px #000000;
       }
     }
-  }
-}
-
-@media screen and (max-width: 490px) {
-  /* Rédigez les propriétés CSS ici */
-  .Poster {
-    display: inline-block;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
     img {
-      padding: 20px 20px 60px 20px;
+      z-index: -1;
+      margin: 1px auto;
       width: 100%;
-      border-radius: 8%;
-      transition: transform 0.1s;
+      border-radius: 10px 10px 0 0;
+      height: 290px;
+      object-fit: contain;
     }
-    span {
-      h6 {
-        text-align: center;
-      }
+
+    img:hover {
+      -ms-transform: scale(1.2, 1.1);
+      /* IE 9 */
+      -webkit-transform: scale(1.2, 1.1);
+      /* Safari 3-8 */
+      transform: scale(1.2, 1.1);
     }
   }
 }

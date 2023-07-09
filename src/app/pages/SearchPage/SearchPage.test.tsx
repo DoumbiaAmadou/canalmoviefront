@@ -14,9 +14,7 @@ describe("it should mount SearchPage Correctly", () => {
         </Routes>
       </BrowserRouter>
     );
-    const searchPage = screen.getByText(
-      "Welcome to Canal Movie search Engine."
-    );
+    const searchPage = screen.getByText("Movie search Engine.");
     const asc = screen.getByText("ASC");
     expect(searchPage).toBeInTheDocument();
     expect(asc).toBeInTheDocument();
