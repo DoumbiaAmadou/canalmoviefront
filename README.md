@@ -15,7 +15,7 @@ hosting in https://movie-two-tau.vercel.app/
 
 ## General info
 
-By default i use discovery request to find all TV or Movie content and apply a search, sort, paginate module in it.  
+By default, i use discovery request to find all TV or Movie content and apply a search, sort, paginate module in it.  
 there is a search mode, which use MultiSearch EndPoint to find all Movie and TV content  
 **NB:**
 
